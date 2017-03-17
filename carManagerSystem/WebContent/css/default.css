@@ -1,0 +1,123 @@
+/***
+Default theme
+***/
+/***
+Reset and overrides  
+***/
+body {
+    background-color:#99CEF4 !important;
+}
+/***
+Page header
+***/
+.header .navbar-inner {
+    width: 1349px;
+    filter: none !important;
+    background-image: none !important;
+    background-color: #1787D3 !important;
+}
+.header .btn-navbar {
+    background-color:   #115F97 !important;
+}
+
+/***
+Page sidebar
+***/
+.page-sidebar {
+    background-color:#99CEF4;
+}
+ul.page-sidebar-menu > li > a {
+    border-top: 1px solid #28CCFF !important;
+    color: #ffffff !important;
+}
+ul.page-sidebar-menu > li:last-child > a {
+    border-bottom: 1px solid transparent !important;
+}
+ul.page-sidebar-menu > li a i {
+    color:   #556F82;
+}
+ul.page-sidebar-menu > li.open > a,
+ul.page-sidebar-menu > li > a:hover,
+ul.page-sidebar-menu > li:hover > a {
+    background: #0098C8;
+}
+ul.page-sidebar-menu > li.active > a {
+    background:#A2C16F !important;
+    border-top-color:#99CEF4 !important;
+    color: #ffffff;
+}
+ul.page-sidebar-menu > li.active > a i {
+    color: #ffffff;
+}
+ul.page-sidebar-menu > li > ul.sub-menu > li:first-child > a {
+    border-top: 0px !important;
+}
+
+
+ul.page-sidebar-menu > li > ul.sub-menu > li.active > a,
+ul.page-sidebar-menu > li > ul.sub-menu > li > a:hover {
+    color:  #bdbdbd !important;
+    background: #6CDB00 !important;
+}
+ul.page-sidebar-menu > li > ul.sub-menu > li > a:hover {
+    background:#5AB0ED !important;
+}
+/* 3rd level sub menu */
+ul.page-sidebar-menu > li > ul.sub-menu li > ul.sub-menu > li.active > a,
+ul.page-sidebar-menu > li > ul.sub-menu li > ul.sub-menu > li > a:hover,
+ul.page-sidebar-menu > li > ul.sub-menu li.open > a {
+    color: #bdbdbd !important;
+    background:  #BBEFFF !important;
+}
+/* font color for all sub menu links*/
+ul.page-sidebar-menu li > ul.sub-menu > li > a {
+    color: #ffffff ;
+}
+
+
+
+
+
+
+
+
+/***
+Sidebar toggler
+***/
+.sidebar-toggler {
+    background-image: url(../image/sidebar-toggler.jpg);
+    background-color: #99CEF4;
+}
+/* search box bg color on expanded */
+.page-sidebar-closed .page-sidebar .sidebar-search.open {
+    background-color:#99CEF4 !important;
+}
+.page-sidebar-closed .page-sidebar .sidebar-search.open .remove {
+    background-image: url("../image/sidebar-search-close.png");
+}
+/* sub menu bg color on hover menu item */
+.page-sidebar-closed ul.page-sidebar-menu > li:hover .sub-menu {
+    background-color:#99CEF4;
+}
+
+
+
+
+
+/***
+Footer
+***/
+.footer .footer-inner {
+    color: #999999;
+}
+.footer .footer-tools .go-top {
+    background-color: #4f4f4f;
+}
+.footer .footer-tools .go-top:hover {
+    opacity: 0.7;
+    filter: alpha(opacity=70);
+}
+.footer .footer-tools .go-top i {
+    color: #8a8a8a;
+}
+

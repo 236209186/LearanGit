@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.action.extension" value="do,action"></constant>
+	<constant name="struts.objectFactory.spring.autoWire" value="type"></constant>
+	
+	<package name="user" namespace="/" extends="struts-default">
+	<!-- 自己定义拦截器 -->
+		<interceptors>
+			<interceptor name="myInterceptor" class="park.interceptor.LoginInterceptor"></interceptor>
+			<interceptor-stack name="mydefault">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="myInterceptor"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+
+		<global-results>
+			<result name="login">/login.jsp</result>
+		</global-results>
+
+		<action name="userLogin" class="park.action.UserAction" method="userLogin">
+			<result>index.jsp</result>
+			<result name="input">login.jsp</result>
+		</action>
+		
+		<action name="register" class="park.action.UserAction" method="register">
+			<result>result.jsp</result>
+		</action>
+		
+		<action name="deleteUser" class="park.action.UserAction" method="deleteUser">
+			<result>result.jsp</result>
+		</action>
+		<action name="logOut" class="park.action.UserAction" method="logOut">
+			<result>login.jsp</result>
+		</action>
+		
+		<action name="queryUserByName" class="park.action.UserAction" method="queryUserByName">
+			<result>userManager.jsp</result>
+			<interceptor-ref name="mydefault"/>
+		</action>
+		
+		<action name="queryUserByNameAjax" class="park.action.UserAction" method="queryUserByNameAjax">
+		</action>
+		<action name="queryVipByNameAjax" class="park.action.VipAction" method="queryVipByNameAjax">
+		</action>
+		
+		<action name="queryAdminCommand" class="park.action.UserAction" method="queryAdminCommand">
+		</action>
+		
+		<action name="queryemployeeCommand" class="park.action.UserAction" method="queryemployeeCommand">
+		</action>
+		
+		<action name="queryVipInfo" class="park.action.VipAction" method="queryVipInfo">
+			<result>addVip.jsp</result>
+		</action>
+		
+		<action name="queryAllVipInfo" class="park.action.VipAction" method="queryAllVipInfo">
+			<result>vip.jsp</result>
+		</action>
+		
+		<!-- 验证码 -->
+		<action name="getChcekEcodes" class="park.util.CheckEcodeUtil" method="getChcekEcodes">  
+            <result type="stream">  
+                <param name="inputName">input</param>  
+                <param name="contentType">image/jpeg</param>  
+            </result>  
+        </action>
+        <!-- 校验验证码 -->
+        <action name="checkEcode" class="park.util.CheckEcodeUtil" method="checkEcode">
+		</action>
+        
+		<action name="modifyUser" class="park.action.UserAction" method="modifyUser">
+			<result>modify.jsp</result>
+		</action>
+		
+		<action name="addParkInfo" class="park.action.ParkInfoAction" method="addParkInfo">
+			<result>parkInfo.jsp</result>
+		</action>
+		
+		<action name="queryParkInfo" class="park.action.ParkInfoAction" method="queryParkInfo">
+			<result>parkInfo.jsp</result>
+			<result name="error">index.jsp</result>
+			<result name="input">login.jsp</result>
+		</action>
+		
+		<action name="deleteParkInfo" class="park.action.ParkInfoAction" method="deleteParkInfo">
+			<result>parkResult.jsp</result>
+		</action>
+		
+		<action name="getListParkInfo" class="park.action.ParkInfoAction" method="getListParkInfo">
+			<result>parkInfo.jsp</result>
+		</action>
+		
+		<action name="modifyParkInfo" class="park.action.ParkInfoAction" method="modifyParkInfo">
+			
+		</action>
+		
+		<action name="addChargeInfo" class="park.action.CarParkAction" method="addChargeInfo">
+			
+		</action>
+		
+		<action name="getAllParkName" class="park.action.ParkInfoAction" method="getAllParkName">
+			<result>queryParkNumber.jsp</result>
+		</action>
+		
+		<action name="getBespeakInfo" class="park.action.ParkInfoAction" method="queryBespeakInfo">
+			<result>bespeak.jsp</result>
+		</action>
+		
+		<action name="addCarParkInfo" class="park.action.CarParkAction" method="addCarParkInfo">
+			<result>carInfoResult.jsp</result>
+		</action>
+		
+		<action name="reservationPosition" class="park.action.CarParkAction" method="reservationPosition">
+			<result>carInfoResult.jsp</result>
+		</action>
+		
+		<action name="queryAllCarInfo" class="park.action.CarParkAction" method="queryAllCarInfo">
+			<result>carRegister.jsp</result>
+		</action>
+		
+		<action name="deleteCarInfo" class="park.action.CarParkAction" method="deleteCarInfo">
+			<result>carInfoResult.jsp</result>
+		</action>
+		
+		<action name="modifyCarParkInfo" class="park.action.CarParkAction" method="modifyCarParkInfo">
+			<result>carRegister.jsp</result>
+		</action>
+		<action name="queryCarNumberByNameAndType" class="park.action.CarParkAction" method="queryCarNumberByNameAndType">
+		</action>
+		
+		<action name="queryAllChargeInfo" class="park.action.ParkChargeAction" method="queryAllChargeInfo">
+			<result>chargeInfo.jsp</result>
+		</action>
+		
+		<action name="deleteChargeInfo" class="park.action.ParkChargeAction" method="deleteChargeInfo">
+			<result>chargeInfo.jsp</result>
+		</action>
+		
+		<action name="querUserInfo" class="park.action.ParkChargeAction" method="querUserInfo">
+			
+		</action>
+		
+		<action name="deleteUserChargeInfo" class="park.action.ParkChargeAction" method="deleteUserChargeInfo">
+			
+		</action>
+		<action name="addVipInfo" class="park.action.VipAction" method="addVipInfo">
+			<result type="redirectAction">queryAllVipInfo</result>
+		</action>
+		
+		<action name="queryVipInfoByCarNo" class="park.action.VipAction" method="queryVipInfoByCarNo">
+			<result>vip.jsp</result>
+		</action>
+		
+		<action name="deleteVipInfoById" class="park.action.VipAction" method="deleteVipInfoById">
+			<result>vip.jsp</result>
+		</action>
+		
+		<action name="addCarNumberByNameAndType" class="park.action.CarParkAction" method="addCarNumberByNameAndType">
+			
+		</action>
+		<action name="removeCarNumberByNameAndType" class="park.action.CarParkAction" method="removeCarNumberByNameAndType">
+			
+		</action>
+		<!-- <action name="show" class="com.ywjava.action.ShowAction"> <result 
+			name="success">/show.jsp</result> 使用此拦截器 <interceptor-ref name="mydefault" 
+			/> </action> -->
+		<action name="selectCarParkInfoByName" class="park.action.CarParkAction" method="selectCarParkInfoByName">
+		</action>
+		
+		<action name="getReservationInfo" class="park.action.CarParkAction" method="getReservationInfo">
+		</action>
+		
+	</package>
+</struts>
